@@ -1,0 +1,3 @@
+Runs in node.js
+"npm install" in root
+"npx run cypress" initciates UI and builds file structure.

@@ -1,10 +1,9 @@
-.game-container {
+/* .game-container {
     background-color: green;
     padding: 0;
     min-height: 100vh;
     height: 100%;
-    width: 100%;
-    
+    width: 100%;   
 }
 
 .game-content {
@@ -186,7 +185,7 @@
 
 .playing-card>p {
     /* color: black; */
-}
+/* }
 
 .playing-card {
     color: black;
@@ -216,11 +215,13 @@
     background-color: #cacaca;
     color: black;
 }
+
 .sets {
     flex-wrap: wrap;
     display: flex;
     justify-content: center;
 }
+
 .set-cards {
     display: flex;
 }
@@ -239,6 +240,7 @@
     background-color: #cacaca;
     color: black;
 }
+
 .submit-sets {
     font-size: 1rem;
     margin: 6px;
@@ -246,7 +248,8 @@
     background-color: #cacaca;
     color: black;
 }
+
 .red-suit {
     color: #eb0c2a;
-}
+} */
 

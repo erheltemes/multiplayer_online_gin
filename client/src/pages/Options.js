@@ -59,7 +59,7 @@ function Options() {
             playerTwoName: user.username,
             needPlayerTwo: false
           }).then(res => 
-            window.location.replace('/game/' + res.data._id)
+            window.location.replace('/game/' + res.data._id + '/2')
         )};
       });
   }
@@ -72,7 +72,7 @@ function Options() {
       needPlayerTwo: true
     })
       .then(res =>
-        window.location.replace('/game/' + res.data._id)
+        window.location.replace('/game/' + res.data._id + '/1')
       );
   };
 
