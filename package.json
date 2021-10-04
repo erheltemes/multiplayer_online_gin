@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "test:e2e": "npx run cypress",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cd back-end && npm run start",
     "install": "cd client && npm install && cd ../back-end && npm install",
@@ -11,7 +12,8 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "cypress": "^8.5.0"
   }
 }
