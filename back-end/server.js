@@ -13,6 +13,11 @@ console.log(process.env.NODE_ENV )
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets (usually on heroku)
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }

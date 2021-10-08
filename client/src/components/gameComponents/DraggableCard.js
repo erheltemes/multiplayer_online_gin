@@ -45,8 +45,8 @@ function DraggableCard({ index, card, location }) {
     })
     currentLocationSchema.splice(newIndex, 0, movedCard)
 
-    //Preform checks if we are in declareSets State
-    if (gameState.playerAction === "declareSets") {
+    //Preform checks if we are in declareSets or responseSets State
+    if (gameState.playerAction === "declareSets" || gameState.playerAction === "responseSets") {
       //Check Hand
       console.log(playerState.hand.cards.length)
       if (playerState.hand.cards.length !== 0) {
@@ -56,13 +56,16 @@ function DraggableCard({ index, card, location }) {
       }
 
       //Check Unmatched
-      let totalValue = playerState.sets.unmatched.cards.reduce((a,b) => {
-        return a + b.number
-      }, 0)
-      if (totalValue > 10){
-        playerState.sets.unmatched.valid = false
-      } else {
-        playerState.sets.unmatched.valid = true
+      //only check if in declareSets State
+      if (gameState.playerAction === "declareSets") {
+        let totalValue = playerState.sets.unmatched.cards.reduce((a,b) => {
+          return a + b.number
+        }, 0)
+        if (totalValue > 3){
+          playerState.sets.unmatched.valid = false
+        } else {
+          playerState.sets.unmatched.valid = true
+        }
       }
       
       //Check Sets

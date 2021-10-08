@@ -4,16 +4,14 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test:e2e": "npx run cypress",
+    "test-e2e": "npx cypress open",
+    "test-e2e-record": "npx cypress run --record",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cd back-end && npm run start",
     "install": "cd client && npm install && cd ../back-end && npm install",
     "build": "cd client && npm run build"
   },
   "author": "",
-  "license": "ISC",
-  "dependencies": {},
-  "devDependencies": {
-    "cypress": "^8.5.0"
-  }
+  "license": "ISC"
+
 }

@@ -27,7 +27,7 @@ function Draw() {
 
   return (
     <div style={style.draw}>
-      {gameState.action === playerState.number && gameState.playerAction !== "declareSets" ? (
+      {gameState.action === playerState.number && gameState.playerAction !== "declareSets" || "responseSets" ? (
         <div>
           {gameState.playerAction === "discard" ? (
             <h2>Please Drag to Discard</h2>

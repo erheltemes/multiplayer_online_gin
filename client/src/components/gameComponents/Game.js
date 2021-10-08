@@ -5,6 +5,8 @@ import Action from './Action'
 import PlayerHand from './PlayerHand'
 import Draw from './Draw'
 import Sets from './Sets'
+import GameEnd from './GameEnd'
+import WaitingForGameEnd from "./WaitingForGameEnd";
 
 import { useGameContext } from "../../context/GameContext"
 
@@ -24,7 +26,8 @@ function Game() {
   //DISPLAY
   const display = () => {
     if (gameState.action === "force-quit") return (<h1>Disconnected</h1>)
-    if (gameState.action === "game-ended") return (<h1>Game Complete</h1>)
+    if (gameState.action === "game-ended") return (<GameEnd/>)
+    if (playerState.finshedPlay) return (<WaitingForGameEnd/>)
     else return (
       <div style={game}>
         <CurrentPlayerBanner />

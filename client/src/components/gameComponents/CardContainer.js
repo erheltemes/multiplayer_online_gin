@@ -49,7 +49,7 @@ function CardContainer({children, width, location}) { //location is either a set
   const borderColor = () => {
     let currentLocationArr = location.split(".") 
     
-    if (currentLocationArr[0] === "hand" && gameState.playerAction !== "declareSets") {
+    if (currentLocationArr[0] === "hand" && gameState.playerAction !== "declareSets" && gameState.playerAction !== "responseSets" ) {
       return "black"
     }
     //drill back one property and define location

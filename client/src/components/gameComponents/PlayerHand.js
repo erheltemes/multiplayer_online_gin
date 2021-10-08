@@ -76,7 +76,7 @@ function PlayerHand() {
       </CardContainer>
     )
   }
-  if (gameState.playerAction === "declareSets") {
+  if (gameState.playerAction === "declareSets" || gameState.playerAction === "responseSets") {
     return (
       <CardContainer
         width={112}

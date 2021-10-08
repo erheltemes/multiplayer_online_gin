@@ -11,18 +11,30 @@ function SetButtons() {
 
   const handleSubmitSets = () => {
     console.log(gameState)
-    const scoreCount = playerState.sets.unmatched.cards.reduce((a, b) => {return a + b.number}, 0)
-    if (gameState.action === "1") {
-      gameState.score.player1 = scoreCount
-      gameState.action = "2"
-      gameState.playerAction = "declareSets"
+    let scoreCount = playerState.sets.unmatched.cards.reduce((a, b) => { return a + b.number }, 0)
+
+    //if player who went out has a score of zero.
+    if (gameState.playerAction === "declareSets" && scoreCount === 0) {
+      scoreCount = "Gin"
     }
-    else if (gameState.action === "2") {
-      gameState.score.player2 = scoreCount
-      gameState.action = "1"
-      gameState.playerAction = "declareSets"
+
+    gameState.score[playerState.number] = scoreCount
+
+    if (gameState.playerAction === "responseSets") {
+      gameState.action = "game-ended"
+      gameState.playerAction = "none"
+    } else {
+      if (gameState.action === "player2"){
+        gameState.action = "player1"
+      } else {
+        gameState.action = "player2"
+      }
+      gameState.playerAction = "responseSets"
     }
-    updateGameState({...gameState})
+
+    playerState.finshedPlay = true
+    setPlayerState({...playerState})
+    updateGameState({ ...gameState })
   }
 
   const handleReturnToDraw = () => {
@@ -41,14 +53,12 @@ function SetButtons() {
     playerState.sets.unmatched.valid = true
     playerState.hand.valid = false
 
-    setGameState({...gameState})
+    setGameState({ ...gameState })
     setPlayerState({ ...playerState })
   }
 
   const submitSetsValidation = () => {
     //check all location's validity
-    //IF OTHER PLAYER WENT OUT
-    if (gameState.score.player1)
     //iterate through sets 
     for (let i = 1; i < 4; i++) {
       if (!playerState.sets[i].valid) return false
@@ -71,7 +81,44 @@ function SetButtons() {
       return "pointer"
     }
     return "default"
-  } 
+  }
+
+  const ConditionalRender = () => {
+    if (gameState.action === playerState.number) {
+      if (gameState.playerAction === "declareSets") {
+        return (
+          <div style={style.container}>
+            <div
+              style={style.returnToDraw}
+              onClick={handleReturnToDraw}
+            >
+              Return To Draw
+            </div>
+            <div
+              style={style.submitSets}
+              onClick={handleSubmitSets}
+            >
+              Submit Sets
+            </div>
+          </div>
+        )
+      } if (gameState.playerAction === "responseSets") {
+        return (
+          <div style={style.container}>
+            <div
+              style={style.submitSets}
+              onClick={handleSubmitSets}
+            >
+              Submit Sets
+            </div>
+          </div>
+        )
+      }
+    }
+    return (
+      <></>
+    )
+  }
 
   const style = {
     container: {
@@ -100,25 +147,8 @@ function SetButtons() {
   }
 
   return (
-    <div style={style.container}>
-      {gameState.action === playerState.number && gameState.playerAction === "declareSets" ? (
-        <>
-          <div
-            style={style.returnToDraw}
-            onClick={handleReturnToDraw}
-          >
-            Return To Draw
-          </div>
-          <div
-            style={style.submitSets}
-            onClick={handleSubmitSets}
-          >
-            Submit Sets
-          </div>
-        </>
-      ) : (
-        <></>
-      )}
+    <div >
+      <ConditionalRender/>
     </div>
   )
 }
