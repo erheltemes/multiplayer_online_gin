@@ -23,10 +23,10 @@ function DiscardPile() {
     gameState.playerAction = "play"
 
     //Passes Turn
-    if (playerState.number === "1") {
-      gameState.action = "2"
+    if (playerState.number === "player1") {
+      gameState.action = "player2"
     } else {
-      gameState.action = "1"
+      gameState.action = "player1"
     }
 
     updateGameState({ ...gameState })

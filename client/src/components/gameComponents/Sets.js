@@ -27,7 +27,7 @@ function Sets() {
 
   return (
     <div>
-      {gameState.action === playerState.number && gameState.playerAction === "declareSets" ? (
+      {gameState.action === playerState.number && gameState.playerAction === "declareSets" || gameState.playerAction === "responseSets" ? (
         <div>
           <div style={style.setsContainer}>
             <Set

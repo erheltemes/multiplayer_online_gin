@@ -9,9 +9,10 @@ function CurrentPlayerBanner() {
   } = useGameContext()
 
   //DISPLAY
+  const playerNum = playerState.number.replace("player", "")
 
   return (
-    <h1>Current Player: {playerState.number}</h1>
+    <h1>Current Player: {playerNum}</h1>
   )
 }
 

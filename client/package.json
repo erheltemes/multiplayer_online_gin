@@ -23,12 +23,17 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test-e2e": "npx cypress open",
+    "eject": "react-scripts eject",
+    "test-e2e-record": "npx cypress run --record --key 1b3aec8d-e146-4cdb-a590-af82885e0b62"
   },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "cypress": "^8.5.0"
+  }
 }

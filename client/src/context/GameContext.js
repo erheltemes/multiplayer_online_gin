@@ -39,15 +39,15 @@ export const GameProvider = ({ playerNum, children }) => {
     deck: [],
     discard: [],
 
-    action: "set-up", //"ready-to-deal", "1", "2", "force-quit", "game-ended"
-    playerAction: "play", // "discard", "declareSets"
+    action: "set-up", //"ready-to-deal", "player1", "player2", "force-quit", "game-ended"
+    playerAction: "play", // "discard", "declareSets", "finalDraw", "responseSets", "none"
     score: {
       player1: null,
       player2: null 
     },
   })
   const [playerState, setPlayerState] = useState({
-    number: playerNum,
+    number: "player" + playerNum,
     hand: {
       cards: [],
       valid: false
@@ -132,15 +132,16 @@ export const GameProvider = ({ playerNum, children }) => {
 
     const newState = {...gameState} 
     newState.deck = newDeck.deck
-    newState.action = "2"
+    newState.action = "player2"
     updateGameState({...newState})
 
     const player2State = {
-      number: "2",
+      number: "player2",
       hand: {
         cards: hand2,
         valid: false
       },
+      finishedPlay: false,
       sets: {
         1: {
           cards: [],
